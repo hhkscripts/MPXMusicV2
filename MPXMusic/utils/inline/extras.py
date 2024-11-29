@@ -15,27 +15,13 @@ def botplaylist_markup(_):
 
 def close_markup(_):
     upl = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton(
-                    text=_["CLOSE_BUTTON"],
-                    callback_data="close",
-                ),
-            ]
-        ]
+        [[InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close",),]]
     )
     return upl
 
 
 def supp_markup(_):
     upl = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton(
-                    text=_["S_B_9"],
-                    url=SUPPORT_GROUP,
-                ),
-            ]
-        ]
+        [[InlineKeyboardButton(text=_["S_B_9"], url=SUPPORT_GROUP,),]]
     )
     return upl
