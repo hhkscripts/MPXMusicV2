@@ -43,13 +43,13 @@ async def vc_members(client, message):
                     title = m.chat.first_name or "Unknown"
 
             TEXT += (
-                f"{title} ⟿ `{chat_id}` ⟿ {is_muted}\n"
+                f"{title} ⟿ <code>{chat_id}</code> ⟿ {is_muted}\n"
                 f"└ @{username}"
                 "--------------------------------\n\n"
             )
 
         # Add close button
-        close_button = InlineKeyboardMarkup([[InlineKeyboardButton("Cʟᴏsᴇ", callback_data="close")]])
+        [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
 
         if len(TEXT) < 4000:
             await msg.edit(
@@ -65,9 +65,3 @@ async def vc_members(client, message):
             )
     except ValueError as e:
         await msg.edit("❗ 𝗘𝗿𝗿𝗼𝗿𝗲: 𝗡𝗮̃𝗼 𝗳𝗼𝗶 𝗽𝗼𝘀𝘀𝗶́𝘃𝗲𝗹 𝗰𝗮𝗿𝗿𝗲𝗴𝗮𝗿 𝗮 𝗹𝗶𝘀𝘁𝗮.")
-
-# Callback handler for close button
-@app.on_callback_query(filters.regex("close"))
-async def close_button_handler(client, callback_query):
-    await callback_query.message.delete()
-    await callback_query.answer("Message closed!", show_alert=False)
