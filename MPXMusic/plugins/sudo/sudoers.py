@@ -50,7 +50,7 @@ async def sudoers_list(client, message: Message, _):
     text = _["sudo_5"]
     user = await app.get_users(OWNER_ID)
     user = user.first_name if not user.mention else user.mention
-    text += f"1➤ {user}\n"
+    text += f"{user}"
     count = 0
     smex = 0
     for user_id in SUDOERS:
