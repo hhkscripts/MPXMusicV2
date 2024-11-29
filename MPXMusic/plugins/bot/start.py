@@ -1,4 +1,5 @@
 import time
+import random
 
 from pyrogram import filters
 from pyrogram.enums import ChatType
@@ -24,6 +25,23 @@ from MPXMusic.utils.inline import help_pannel, private_panel, start_panel
 from config import BANNED_USERS
 from strings import get_string
 
+WELCOME = [
+    "https://i.postimg.cc/9MKRx6DB/1.png",
+    "https://i.postimg.cc/jqnJWS13/2.png",
+    "https://i.postimg.cc/8cvFxZWg/3.png",
+    "https://i.postimg.cc/NM52ksjM/4.png",
+    "https://i.postimg.cc/RVrJwz5S/5.png",
+    "https://i.postimg.cc/gkvXDBmv/6.png",
+    "https://i.postimg.cc/3x1yM4yN/7.png",
+    "https://i.postimg.cc/8zNFnBzx/8.png",
+    "https://i.postimg.cc/jjjDRxNX/9.png",
+    "https://i.postimg.cc/fbgJLGfh/10.png",
+    "https://i.postimg.cc/FRMzb06W/11.png",
+    "https://i.postimg.cc/Qt9VWffK/12.png",
+    "https://i.postimg.cc/MZBv6rch/13.png",
+    "https://i.postimg.cc/90yMLr5W/14.png",
+    "https://i.postimg.cc/bNjdsHkd/15.png",
+]
 
 @app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
 @LanguageStart
@@ -34,7 +52,7 @@ async def start_pm(client, message: Message, _):
         if name[0:4] == "help":
             keyboard = help_pannel(_)
             return await message.reply_photo(
-                photo=config.START_IMG_URL,
+                random.choice(WELCOME),
                 caption=_["help_1"].format(config.SUPPORT_GROUP),
                 protect_content=True,
                 reply_markup=keyboard,
@@ -88,7 +106,7 @@ async def start_pm(client, message: Message, _):
         out = private_panel(_)
         UP, CPU, RAM, DISK = await bot_sys_stats()
         await message.reply_photo(
-            photo=config.START_IMG_URL,
+            random.choice(WELCOME),
             caption=_["start_2"].format(message.from_user.mention, app.mention, UP, DISK, CPU, RAM),
             reply_markup=InlineKeyboardMarkup(out),
         )
@@ -105,7 +123,7 @@ async def start_gp(client, message: Message, _):
     out = start_panel(_)
     uptime = int(time.time() - _boot_)
     await message.reply_photo(
-        photo=config.START_IMG_URL,
+        random.choice(WELCOME),
         caption=_["start_1"].format(app.mention, get_readable_time(uptime)),
         reply_markup=InlineKeyboardMarkup(out),
     )
@@ -140,7 +158,7 @@ async def welcome(client, message: Message):
 
                 out = start_panel(_)
                 await message.reply_photo(
-                    photo=config.START_IMG_URL,
+                    random.choice(WELCOME),
                     caption=_["start_3"].format(
                         message.from_user.first_name,
                         app.mention,
