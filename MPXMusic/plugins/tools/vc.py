@@ -1,5 +1,6 @@
 from MPXMusic import app
 from MPXMusic.utils import MPXBin
+from MPXMusic.utils.inline import close_markup
 from MPXMusic.utils.database import get_assistant, get_lang
 from pyrogram import filters
 from pyrogram.enums import ChatType
@@ -54,14 +55,14 @@ async def vc_members(client, message):
         if len(TEXT) < 4000:
             await msg.edit(
                 TEXT or "⚠️ Nᴏ ᴘᴀʀᴛɪᴄɪᴘᴀɴᴛs ɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ. 🚫",
-                reply_markup=close_button,
+                reply_markup=close_markup(_),
             )
         else:
             link = await MPXbin(TEXT)
             await msg.edit(
                 f"📄 𝗟𝗶𝗻𝗸 𝗽𝗮𝗿𝗮 𝗹𝗶𝘀𝘁𝗮: {link}",
                 disable_web_page_preview=True,
-                reply_markup=close_button,
+                reply_markup=close_markup(_),
             )
     except ValueError as e:
         await msg.edit("❗ 𝗘𝗿𝗿𝗼𝗿𝗲: 𝗡𝗮̃𝗼 𝗳𝗼𝗶 𝗽𝗼𝘀𝘀𝗶́𝘃𝗲𝗹 𝗰𝗮𝗿𝗿𝗲𝗴𝗮𝗿 𝗮 𝗹𝗶𝘀𝘁𝗮.")
