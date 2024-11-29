@@ -44,7 +44,8 @@ async def vc_members(client, message):
 
             TEXT += (
                 f"{title} ⟿ <code>{chat_id}</code> ⟿ {is_muted}\n"
-                f"└ @{username}\n\n"
+                f"└ @{username}"
+                "\n\n"
             )
 
         if len(TEXT) < 4000:
