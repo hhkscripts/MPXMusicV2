@@ -144,7 +144,7 @@ HELP_14 = """
 /cspeed or /cplayback : ғᴏʀ ᴀᴅᴊᴜsᴛɪɴɢ ᴛʜᴇ ᴀᴜᴅɪᴏ ᴘʟᴀʏʙᴀᴄᴋ sᴘᴇᴇᴅ ɪɴ ᴄʜᴀɴɴᴇʟ.
 """
 
-HELP_16 = """
+HELP_15 = """
 <b><u>Privacy Command :</b></u>
 
 /Privacy : Display the privacy statement for Sarcastic Bot 
