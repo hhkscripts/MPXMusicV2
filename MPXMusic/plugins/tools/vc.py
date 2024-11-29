@@ -1,11 +1,10 @@
 from MPXMusic import app
 from MPXMusic.utils import MPXBin
+from MPXMusic.utils.inline import close_markup
 from MPXMusic.utils.database import get_assistant, get_lang
 from pyrogram import filters
 from pyrogram.enums import ChatType
 from strings import get_string
-from MPXMusic.utils.inline import close_markup
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 @app.on_message(
     filters.command(["vc", "vcs", "vcm", "vcms"]) & filters.admin
@@ -44,7 +43,7 @@ async def vc_members(client, message):
                     title = m.chat.first_name or "Unknown"
 
             TEXT += (
-                f"{title} ⟿ `{chat_id}` ⟿ {is_muted}\n"
+                f"{title} ⟿ <code>{chat_id}</code> ⟿ {is_muted}\n"
                 f"└ @{username}"
                 "--------------------------------\n\n"
             )
