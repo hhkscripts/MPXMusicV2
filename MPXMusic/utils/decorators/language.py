@@ -2,7 +2,7 @@ from MPXMusic.misc import SUDOERS
 from MPXMusic.utils.database import get_lang, is_maintenance
 from config import SUPPORT_GROUP
 from strings import get_string
-
+from MPXMusic import app
 
 def language(mystic):
     async def wrapper(_, message, **kwargs):
