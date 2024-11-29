@@ -1,5 +1,5 @@
 from MPXMusic import app
-from MPXMusic.utils import MPXbin
+from MPXMusic.utils import MPXBin
 from MPXMusic.utils.database import get_assistant, get_lang
 from pyrogram import filters
 from pyrogram.enums import ChatType
