@@ -54,7 +54,7 @@ async def vc_members(client, message):
         if len(TEXT) < 4000:
             await msg.edit(
                 TEXT or "⚠️ Nᴏ ᴘᴀʀᴛɪᴄɪᴘᴀɴᴛs ɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ. 🚫",
-                [InlineKeyboardButton(text=_["CLOSE_BUTTON"],callback_data=f"forceclose {videoid}|{user_id}",)],
+                [InlineKeyboardButton(text=_["CLOSE_BUTTON"],callback_data=f"close",)],
             )
         else:
             link = await MPXbin(TEXT)
