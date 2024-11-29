@@ -104,10 +104,10 @@ async def start_pm(client, message: Message, _):
                 )
     else:
         out = private_panel(_)
-        UP, CPU, RAM, DISK = await bot_sys_stats()
+        UP, CPU, RAM, DISK, SERVER = await bot_sys_stats()
         await message.reply_photo(
             random.choice(WELCOME),
-            caption=_["start_2"].format(message.from_user.mention, app.mention, UP, DISK, CPU, RAM),
+            caption=_["start_2"].format(message.from_user.mention, app.mention, UP, DISK, CPU, RAM, SERVER),
             reply_markup=InlineKeyboardMarkup(out),
         )
         if await is_on_off(2):
