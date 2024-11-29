@@ -249,7 +249,7 @@ async def gen_thumb(videoid: str):
         traceback.print_exc()
         return None
 
-async def gen_qthumb(vidid):
+async def gen_qthumb(vidid: str):
     try:
         query = f"https://www.youtube.com/watch?v={vidid}"
         results = VideosSearch(query, limit=1)
