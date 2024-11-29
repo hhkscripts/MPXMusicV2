@@ -43,7 +43,7 @@ async def vc_members(client, message):
                     title = m.chat.first_name or "Unknown"
 
             TEXT += (
-                f"{title} ⟿ <code>{chat_id}</code> ⟿ {is_muted}\n"
+                f"{title} ⟿ `{chat_id}` ⟿ {is_muted}\n"
                 f"└ @{username}"
                 "--------------------------------\n\n"
             )
