@@ -13,7 +13,7 @@ from MPXMusic.utils.exceptions import AssistantErr
 from MPXMusic.utils.inline import aq_markup, close_markup, stream_markup
 from MPXMusic.utils.pastebin import MPXBin
 from MPXMusic.utils.stream.queue import put_queue, put_queue_index
-from MPXMusic.utils.thumbnails import gen_qthumb, gen_thumb
+from MPXMusic.utils.thumbnails import gen_thumb
 
 
 async def stream(
@@ -164,18 +164,16 @@ async def stream(
                 "video" if video else "audio",
             )
             position = len(db.get(chat_id)) - 1
-            qimg = await gen_qthumb(vidid)
             button = aq_markup(_, chat_id)
             await app.send_message(
                 chat_id=original_chat_id,
-                photo=qimg,
                 text=_["queue_4"].format(position, title[:27], duration_min, user_name),
                 reply_markup=InlineKeyboardMarkup(button),
             )
         else:
             if not forceplay:
                 db[chat_id] = []
-            await MPX.join_call(
+            await Aviax.join_call(
                 chat_id,
                 original_chat_id,
                 file_path,
@@ -235,7 +233,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await MPX.join_call(chat_id, original_chat_id, file_path, video=None)
+            await Aviax.join_call(chat_id, original_chat_id, file_path, video=None)
             await put_queue(
                 chat_id,
                 original_chat_id,
@@ -287,7 +285,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await MPX.join_call(chat_id, original_chat_id, file_path, video=status)
+            await Aviax.join_call(chat_id, original_chat_id, file_path, video=status)
             await put_queue(
                 chat_id,
                 original_chat_id,
@@ -343,7 +341,7 @@ async def stream(
             n, file_path = await YouTube.video(link)
             if n == 0:
                 raise AssistantErr(_["str_3"])
-            await MPX.join_call(
+            await Aviax.join_call(
                 chat_id,
                 original_chat_id,
                 file_path,
@@ -401,7 +399,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await MPX.join_call(
+            await Aviax.join_call(
                 chat_id,
                 original_chat_id,
                 link,
