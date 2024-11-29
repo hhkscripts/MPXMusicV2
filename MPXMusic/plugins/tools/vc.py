@@ -49,12 +49,12 @@ async def vc_members(client, message):
             )
 
         # Add close button
-        [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
+        close_button = InlineKeyboardMarkup([[InlineKeyboardButton("Cʟᴏsᴇ", callback_data="close")]])
 
         if len(TEXT) < 4000:
             await msg.edit(
                 TEXT or "⚠️ Nᴏ ᴘᴀʀᴛɪᴄɪᴘᴀɴᴛs ɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ. 🚫",
-                reply_markup=close_button,
+                [InlineKeyboardButton(text=_["CLOSE_BUTTON"],callback_data=f"forceclose {videoid}|{user_id}",)],
             )
         else:
             link = await MPXbin(TEXT)
