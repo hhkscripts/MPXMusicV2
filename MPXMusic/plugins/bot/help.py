@@ -1,3 +1,5 @@
+import random
+
 from typing import Union
 
 from pyrogram import filters, types
@@ -11,6 +13,23 @@ from MPXMusic.utils.inline.help import help_back_markup, private_help_panel
 from config import BANNED_USERS, START_IMG_URL, SUPPORT_GROUP
 from strings import get_string, helpers
 
+WELCOME = [
+    "https://i.postimg.cc/9MKRx6DB/1.png",
+    "https://i.postimg.cc/jqnJWS13/2.png",
+    "https://i.postimg.cc/8cvFxZWg/3.png",
+    "https://i.postimg.cc/NM52ksjM/4.png",
+    "https://i.postimg.cc/RVrJwz5S/5.png",
+    "https://i.postimg.cc/gkvXDBmv/6.png",
+    "https://i.postimg.cc/3x1yM4yN/7.png",
+    "https://i.postimg.cc/8zNFnBzx/8.png",
+    "https://i.postimg.cc/jjjDRxNX/9.png",
+    "https://i.postimg.cc/fbgJLGfh/10.png",
+    "https://i.postimg.cc/FRMzb06W/11.png",
+    "https://i.postimg.cc/Qt9VWffK/12.png",
+    "https://i.postimg.cc/MZBv6rch/13.png",
+    "https://i.postimg.cc/90yMLr5W/14.png",
+    "https://i.postimg.cc/bNjdsHkd/15.png",
+]
 
 @app.on_message(filters.command(["help"]) & filters.private & ~BANNED_USERS)
 @app.on_callback_query(filters.regex("settings_back_helper") & ~BANNED_USERS)
@@ -39,7 +58,7 @@ async def helper_private(
         _ = get_string(language)
         keyboard = help_pannel(_)
         await update.reply_photo(
-            photo=START_IMG_URL,
+            random.choice(WELCOME),
             caption=_["help_1"].format(SUPPORT_GROUP),
             reply_markup=keyboard,
         )
