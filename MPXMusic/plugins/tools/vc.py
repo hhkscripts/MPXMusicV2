@@ -4,6 +4,7 @@ from MPXMusic.utils.database import get_assistant, get_lang
 from pyrogram import filters
 from pyrogram.enums import ChatType
 from strings import get_string
+from MPXMusic.utils.inline import close_markup
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 @app.on_message(
@@ -51,14 +52,14 @@ async def vc_members(client, message):
         if len(TEXT) < 4000:
             await msg.edit(
                 TEXT or "⚠️ Nᴏ ᴘᴀʀᴛɪᴄɪᴘᴀɴᴛs ɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ. 🚫",
-                keyboard = InlineKeyboardMarkup([[InlineKeyboardButton("Cʟᴏsᴇ", callback_data="close")]]),
+                reply_markup=close_markup(_),
             )
         else:
             link = await MPXbin(TEXT)
             await msg.edit(
                 f"📄 𝗟𝗶𝗻𝗸 𝗽𝗮𝗿𝗮 𝗹𝗶𝘀𝘁𝗮: {link}",
                 disable_web_page_preview=True,
-                keyboard = InlineKeyboardMarkup([[InlineKeyboardButton("Cʟᴏsᴇ", callback_data="close")]]),
+                reply_markup=close_markup(_),
             )
     except ValueError as e:
         await msg.edit("❗ 𝗘𝗿𝗿𝗼𝗿𝗲: 𝗡𝗮̃𝗼 𝗳𝗼𝗶 𝗽𝗼𝘀𝘀𝗶́𝘃𝗲𝗹 𝗰𝗮𝗿𝗿𝗲𝗴𝗮𝗿 𝗮 𝗹𝗶𝘀𝘁𝗮.")
